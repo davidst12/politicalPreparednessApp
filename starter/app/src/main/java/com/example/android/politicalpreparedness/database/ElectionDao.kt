@@ -1,22 +1,48 @@
 package com.example.android.politicalpreparedness.database
 
-import androidx.room.Dao
-import androidx.room.Insert
-import androidx.room.Query
-import androidx.room.Update
+import androidx.room.*
 import com.example.android.politicalpreparedness.network.models.Election
 
 @Dao
 interface ElectionDao {
 
-    //TODO: Add insert query
+    /**
+     * Insert a election in the database.
+     *
+     * @param election the task to be inserted.
+     */
+    @Insert()
+    suspend fun saveElection(election: Election)
 
-    //TODO: Add select all election query
+    /**
+     * Select all elections from the tasks table.
+     *
+     * @return all election saved.
+     */
+    @Query("SELECT * FROM election_table")
+    suspend fun getElections(): List<Election>
 
-    //TODO: Add select single election query
+    /**
+     * Select a task by id.
+     *
+     * @param electionId the election id.
+     * @return the election with electionId.
+     */
+    @Query("SELECT * FROM election_table WHERE id = :electionId")
+    suspend fun getElectionById(electionId: Int): Election?
 
-    //TODO: Add delete query
+    /**
+     * Delete a election by id.
+     *
+     * @return the number of tasks deleted. This should always be 1.
+     */
+    @Query("DELETE FROM election_table WHERE id = :electionId")
+    suspend fun deleteElectionById(electionId: Int): Int
 
-    //TODO: Add clear query
+    /**
+     * Delete all elections.
+     */
+    @Query("DELETE FROM election_table")
+    suspend fun deleteElections()
 
 }

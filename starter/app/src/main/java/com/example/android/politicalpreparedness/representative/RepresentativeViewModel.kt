@@ -1,26 +1,39 @@
 package com.example.android.politicalpreparedness.representative
 
+import android.util.Log
+import androidx.lifecycle.LiveData
+import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
+import androidx.lifecycle.viewModelScope
+import com.example.android.politicalpreparedness.repository.Repository
+import com.example.android.politicalpreparedness.representative.model.Representative
+import kotlinx.coroutines.launch
 
-class RepresentativeViewModel: ViewModel() {
+class RepresentativeViewModel(private val repository: Repository): ViewModel() {
 
-    //TODO: Establish live data for representatives and address
+    companion object {
+        private val TAG = RepresentativeViewModel::class.java.simpleName
+    }
 
-    //TODO: Create function to fetch representatives from API from a provided address
+    // Live data for representatives
+    private val _representatives = MutableLiveData<List<Representative>>()
+    val representatives: LiveData<List<Representative>> = _representatives
 
-    /**
-     *  The following code will prove helpful in constructing a representative from the API. This code combines the two nodes of the RepresentativeResponse into a single official :
+    // Live data for exceptions
+    private val _exception = MutableLiveData<Exception>()
+    val exception: LiveData<Exception> = _exception
 
-    val (offices, officials) = getRepresentativesDeferred.await()
-    _representatives.value = offices.flatMap { office -> office.getRepresentatives(officials) }
-
-    Note: getRepresentatives in the above code represents the method used to fetch data from the API
-    Note: _representatives in the above code represents the established mutable live data housing representatives
-
-     */
-
-    //TODO: Create function get address from geo location
-
-    //TODO: Create function to get address from individual fields
+    // Function to fetch representatives from API from a provided address
+    fun fetchRepresentatives(address: String){
+        viewModelScope.launch {
+            try {
+                _representatives.value = repository.getRepresentatives(address)
+                Log.d(TAG, "Representatives: ${representatives.value}")
+            }catch (e: java.lang.Exception){
+                Log.e(TAG, "Exception while fetching representatives. Exception: $e")
+                _exception.value = e
+            }
+        }
+    }
 
 }

@@ -1,7 +1,31 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <string name="app_name">Political Preparedness</string>
-
-    <!-- TODO: Add necessary string values -->
+    <string name="upcoming_elections_button_text">Upcoming elections</string>
+    <string name="find_my_representatives_button_text">Find my representatives</string>
+    <string name="my_representatives_text">My Representatives</string>
+    <string name="representatives_search_text">Representatives Search</string>
+    <string name="use_my_location_button_text">Use my location</string>
+    <string name="location_null_toast_text">Something went wrong getting the location</string>
+    <string name="location_is_disable_snackbar_text">Location should be enabled</string>
+    <string name="request_location_permission_snackbar_text">It is needed location permissions</string>
+    <string name="address_empty_text">Address fields are empty. Fill all of them</string>
+    <string name="unfollow_election_text_button">Unfollow election</string>
+    <string name="follow_election_text_button">Follow election</string>
+    <string name="voter_info_error_toast_text">Unexpected error handling election. Please try again</string>
+    <string name="no_internet_connection_elections_toast_text">No internet connection. Impossible to fetch elections</string>
+    <string name="elections_error_toast_text">Unexpected error getting election. Please try again</string>
+    <string name="no_internet_connection_representatives_toast_text">No internet connection. Impossible to fetch representatives</string>
+    <string name="representatives_error_toast_text">Unexpected error getting representatives. Please try again</string>
+    <string name="unexpected_error_representatives_toast_text">Unexpected error occur getting the location. Check your internet connection and location</string>
+    <string name="zip_hint_text">Zip</string>
+    <string name="city_hint_text">City</string>
+    <string name="address_line_2_hint_text">Address Line 2</string>
+    <string name="address_line_1_hint_text">Address Line 1</string>
+    <string name="election_information_text">Election Information</string>
+    <string name="election_administration_address_text">Election administration address:</string>
+    <string name="ballot_info_text">Ballot info</string>
+    <string name="voting_location_text">Voting location</string>
+    <string name="election_info_text">Election info</string>
 
 </resources>
