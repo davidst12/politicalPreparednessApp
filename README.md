@@ -24,7 +24,9 @@ Step by step explanation of how to get a dev environment running.
 List out the steps
 
 ```
-Clone this repo -> Compile and run the app !!
+Clone this repo
+Insert an api-key of Civics API inside network/CivicHttpClient -> API_KEY
+Compile and run the app !!
 ```
 
 ## Project Instructions
