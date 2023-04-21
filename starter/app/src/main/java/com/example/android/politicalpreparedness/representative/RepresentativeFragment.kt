@@ -71,8 +71,7 @@ class DetailFragment : Fragment() {
             val city = binding.city.text.toString()
             val state = binding.state.selectedItem.toString()
             val zip = binding.zip.text.toString()
-            if(line1.isEmpty() || line2.isEmpty() || city.isEmpty() ||
-                    state.isEmpty() || zip.isEmpty()){
+            if(line1.isEmpty() || city.isEmpty() || state.isEmpty() || zip.isEmpty()){
                 Toast.makeText(context, getString(R.string.address_empty_text), Toast.LENGTH_SHORT).show()
             }else{
                 val address = Address(line1, line2, city, state, zip).toString()
@@ -80,7 +79,7 @@ class DetailFragment : Fragment() {
                 if(Utils.checkInternetConnection(context!!)){
                     viewModel.fetchRepresentatives(address)
                 }else{
-                    Toast.makeText(context, getString(R.string.no_internet_connection_representatives_toast_text), Toast.LENGTH_LONG).show()
+                    Toast.makeText(context, getString(R.string.no_internet_connection_representatives_toast_text), Toast.LENGTH_SHORT).show()
                 }
             }
         }
@@ -93,7 +92,7 @@ class DetailFragment : Fragment() {
 
         // Handle unexpected errors showing a toast to the user
         viewModel.exception.observe(viewLifecycleOwner, androidx.lifecycle.Observer {
-            Toast.makeText(context, getString(R.string.representatives_error_toast_text), Toast.LENGTH_LONG).show()
+            Toast.makeText(context, getString(R.string.representatives_error_toast_text), Toast.LENGTH_SHORT).show()
         })
 
         return binding.root
@@ -219,7 +218,7 @@ class DetailFragment : Fragment() {
                         if(Utils.checkInternetConnection(context!!)){
                             viewModel.fetchRepresentatives(currentAddress.toString())
                         }else{
-                            Toast.makeText(context, getString(R.string.no_internet_connection_representatives_toast_text), Toast.LENGTH_LONG).show()
+                            Toast.makeText(context, getString(R.string.no_internet_connection_representatives_toast_text), Toast.LENGTH_SHORT).show()
                         }
                     }catch (e: java.lang.Exception){
                         Toast.makeText(context,getString(R.string.unexpected_error_representatives_toast_text), Toast.LENGTH_SHORT).show()

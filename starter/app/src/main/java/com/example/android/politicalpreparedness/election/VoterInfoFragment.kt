@@ -47,7 +47,7 @@ class VoterInfoFragment : Fragment() {
         if(Utils.checkInternetConnection(context!!)){
             viewModel.getVoterInfo(electionDivision)
         }else{
-            Toast.makeText(context, getString(R.string.no_internet_connection_elections_toast_text), Toast.LENGTH_LONG).show()
+            Toast.makeText(context, getString(R.string.no_internet_connection_elections_toast_text), Toast.LENGTH_SHORT).show()
         }
         viewModel.checkIfElectionIsSaved()
 
@@ -89,7 +89,7 @@ class VoterInfoFragment : Fragment() {
 
         // Handle unexpected errors showing a toast to the user
         viewModel.exception.observe(viewLifecycleOwner, androidx.lifecycle.Observer {
-            Toast.makeText(context, getString(R.string.voter_info_error_toast_text), Toast.LENGTH_LONG).show()
+            Toast.makeText(context, getString(R.string.voter_info_error_toast_text), Toast.LENGTH_SHORT).show()
         })
 
         return binding.root

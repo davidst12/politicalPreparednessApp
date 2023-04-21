@@ -65,7 +65,7 @@ class ElectionsFragment: Fragment() {
 
         // Handle unexpected errors showing a toast to the user
         viewModel.exception.observe(viewLifecycleOwner, androidx.lifecycle.Observer {
-            Toast.makeText(context, getString(R.string.elections_error_toast_text), Toast.LENGTH_LONG).show()
+            Toast.makeText(context, getString(R.string.elections_error_toast_text), Toast.LENGTH_SHORT).show()
         })
 
         // Getting elections
@@ -73,7 +73,7 @@ class ElectionsFragment: Fragment() {
         if(Utils.checkInternetConnection(context!!)){
             viewModel.fetchRemoteElections()
         }else{
-            Toast.makeText(context, getString(R.string.no_internet_connection_elections_toast_text), Toast.LENGTH_LONG).show()
+            Toast.makeText(context, getString(R.string.no_internet_connection_elections_toast_text), Toast.LENGTH_SHORT).show()
         }
         viewModel.fetchSavedElections()
 
